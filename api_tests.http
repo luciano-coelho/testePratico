@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### Listar Tarefas
 GET http://127.0.0.1:8000/api/tasks/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzM0MTM3LCJpYXQiOjE3MzA3MzM4MzcsImp0aSI6IjE2YzAzM2I0YmNlOTQ0ZWNiZTIxMjViMDkzYWE3ZjA1IiwidXNlcl9pZCI6MX0.L1c1sSwAR2cpJWq98ST1IJRw_hkNuKlzV19c8qitrqk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzQ0Njg4LCJpYXQiOjE3MzA3NDQzODgsImp0aSI6IjRlY2FlZWNlZWQ5ODQ0NWVhYmQwNzNkYjQ4ZTUyMjQ2IiwidXNlcl9pZCI6MX0.pQ4sPW3Gz8p3lXxcRFmO_fqLPU4P1wYk4Q3c1GPe8rY
 ### Criar uma Nova Tarefa
 POST http://127.0.0.1:8000/api/tasks/
 Content-Type: application/json
@@ -46,4 +46,14 @@ Content-Type: application/json
 
 {
   "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMDcxNzE0NywiaWF0IjoxNzMwNjMwNzQ3LCJqdGkiOiIzYTkwZGY4ZWFlNjM0OTI3OGYyZTJjYjlmZTMzYjYxOCIsInVzZXJfaWQiOjF9.s2Hrc9pgWPDH61t4aelNHwTMCVRyBdggnzrpTDMi_X0"
+}
+
+### Registro de Usuário
+POST http://127.0.0.1:8000/api/register/
+Content-Type: application/json
+
+{
+    "username": "teste_usuario",
+    "password": "123456",
+    "email": "teste@teste.com"
 }
