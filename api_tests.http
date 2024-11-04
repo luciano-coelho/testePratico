@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### Listar Tarefas
 GET http://127.0.0.1:8000/api/tasks/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzMyMzUzLCJpYXQiOjE3MzA3MzIwNTMsImp0aSI6IjNjMzQzNjM0ZmUwNTRjN2FhY2I5MDNiOWY1MGI2M2IyIiwidXNlcl9pZCI6MX0.YXLQdTIbTGDwRmfUkjsr-42RsFbFE6bM7IZoCcQRgaA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzM0MTM3LCJpYXQiOjE3MzA3MzM4MzcsImp0aSI6IjE2YzAzM2I0YmNlOTQ0ZWNiZTIxMjViMDkzYWE3ZjA1IiwidXNlcl9pZCI6MX0.L1c1sSwAR2cpJWq98ST1IJRw_hkNuKlzV19c8qitrqk
 ### Criar uma Nova Tarefa
 POST http://127.0.0.1:8000/api/tasks/
 Content-Type: application/json
