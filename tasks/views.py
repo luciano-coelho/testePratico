@@ -9,9 +9,6 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = self.queryset.filter(user=self.request.user)
-        completed = self.request.query_params.get('completed')
-        if completed is not None:
-            queryset = queryset.filter(completed=(completed.lower() == 'true'))
         return queryset
 
     def perform_create(self, serializer):
