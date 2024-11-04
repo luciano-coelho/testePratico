@@ -1,0 +1,49 @@
+### Obter Token
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+ "username": "teste",
+"password": "teste"
+}
+
+### Listar Tarefas
+GET http://127.0.0.1:8000/api/tasks/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzMyMzUzLCJpYXQiOjE3MzA3MzIwNTMsImp0aSI6IjNjMzQzNjM0ZmUwNTRjN2FhY2I5MDNiOWY1MGI2M2IyIiwidXNlcl9pZCI6MX0.YXLQdTIbTGDwRmfUkjsr-42RsFbFE6bM7IZoCcQRgaA
+### Criar uma Nova Tarefa
+POST http://127.0.0.1:8000/api/tasks/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNjMxNDk1LCJpYXQiOjE3MzA2MzA3NDcsImp0aSI6IjYzNDc4NTFlN2U2ZDQzMDZhYTg1Y2M0YWUwZTA0NDFjIiwidXNlcl9pZCI6MX0.vT1OADjeNeGjpB3B-IlH372cB9UglwYqorgKjF6rnTE
+
+{
+  "title": "mais uma tarefa",
+  "description": "uma descrição de teste",
+  "completed": false
+}
+
+### Obter Detalhes de uma Tarefa Específica
+GET http://127.0.0.1:8000/api/tasks/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNjMxNDk1LCJpYXQiOjE3MzA2MzA3NDcsImp0aSI6IjYzNDc4NTFlN2U2ZDQzMDZhYTg1Y2M0YWUwZTA0NDFjIiwidXNlcl9pZCI6MX0.vT1OADjeNeGjpB3B-IlH372cB9UglwYqorgKjF6rnTE
+
+### Atualizar uma Tarefa
+PUT http://127.0.0.1:8000/api/tasks/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNjMxMDQ3LCJpYXQiOjE3MzA2MzA3NDcsImp0aSI6ImVkNjBhOTc0NzIzNDQ5MDM4ZjQ1YzAzYWY3NWVjYWEyIiwidXNlcl9pZCI6MX0.J-czstaXRbpUsEYQhqiq_HppL1n12la3vP8N5WPSjDg
+
+{
+  "title": "Tarefa de teste atualizada",
+  "description": "uma descrição atualizada",
+  "completed": true
+}
+
+### Excluir uma Tarefa
+DELETE http://127.0.0.1:8000/api/tasks/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNjMxNDk1LCJpYXQiOjE3MzA2MzA3NDcsImp0aSI6IjYzNDc4NTFlN2U2ZDQzMDZhYTg1Y2M0YWUwZTA0NDFjIiwidXNlcl9pZCI6MX0.vT1OADjeNeGjpB3B-IlH372cB9UglwYqorgKjF6rnTE
+
+### Atualizar Token JWT
+POST http://127.0.0.1:8000/api/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMDcxNzE0NywiaWF0IjoxNzMwNjMwNzQ3LCJqdGkiOiIzYTkwZGY4ZWFlNjM0OTI3OGYyZTJjYjlmZTMzYjYxOCIsInVzZXJfaWQiOjF9.s2Hrc9pgWPDH61t4aelNHwTMCVRyBdggnzrpTDMi_X0"
+}
