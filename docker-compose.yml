@@ -1,12 +1,13 @@
 services:
   web:
     build:
-      context: .
+      context: ./testePratico
       dockerfile: Dockerfile
     container_name: django-backend
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - ./testePratico:/app
     environment:
       - DEBUG=1
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]

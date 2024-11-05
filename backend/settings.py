@@ -7,7 +7,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-secret-key')
 
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -100,4 +100,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = os.getenv('DJANGO_CORS_ALLOWED_ORIGINS', "http://localhost:3001").split(',')
 
-
+CORS_ALLOW_CREDENTIALS = True
