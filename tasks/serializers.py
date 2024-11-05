@@ -1,11 +1,17 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import Task
+from .models import Category
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name']
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ['id', 'title', 'description', 'completed', 'created_at', 'updated_at', 'user']
+        fields = ['id', 'title', 'description', 'completed', 'created_at', 'updated_at', 'user', 'category']
         read_only_fields = ['id', 'created_at', 'updated_at', 'user']
 
 class UserRegistrationSerializer(serializers.ModelSerializer):

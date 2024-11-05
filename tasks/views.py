@@ -3,7 +3,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from .models import Task
+from .models import Category
+from .serializers import CategorySerializer
 from .serializers import TaskSerializer, UserRegistrationSerializer
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
