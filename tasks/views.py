@@ -2,16 +2,10 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .models import Task
-from .models import Category
-from .serializers import CategorySerializer
-from .serializers import TaskSerializer, UserRegistrationSerializer
-
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = [permissions.IsAuthenticated]
-
+from django.db.models import Q
+from django.contrib.auth.models import User
+from .models import Task, Category
+from .serializers import TaskSerializer, CategorySerializer, UserRegistrationSerializer
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
@@ -19,8 +13,7 @@ class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        queryset = self.queryset.filter(user=self.request.user)
-        return queryset
+        return Task.objects.filter(Q(user=self.request.user) | Q(shared_with=self.request.user)).distinct()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -31,6 +24,31 @@ class TaskViewSet(viewsets.ModelViewSet):
         task.completed = not task.completed
         task.save()
         return Response({'status': 'updated', 'completed': task.completed}, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=['post'], url_path='share')
+    def share_task(self, request, pk=None):
+        task = self.get_object()
+        user_id = request.data.get("user_id")
+        
+        if not user_id:
+            return Response({"error": "User ID is required"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            user_to_share = User.objects.get(id=user_id)
+            task.shared_with.add(user_to_share)
+            return Response({"status": "Task shared successfully"}, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save()
+
 
 class UserRegistrationView(APIView):
     permission_classes = [permissions.AllowAny]
