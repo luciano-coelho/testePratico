@@ -1,22 +1,35 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Task
-from .models import Category
+from .models import Task, Category
 
+# Serializer para representar a categoria associada a uma tarefa
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name']
 
-class TaskSerializer(serializers.ModelSerializer):
-    shared_with = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())
+# Serializer para representar os usuários com username e id
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username']
 
+# Serializer principal para a tarefa
 class TaskSerializer(serializers.ModelSerializer):
+    # Usando UserSerializer para `shared_with` para exibir `username` dos usuários
+    shared_with = UserSerializer(many=True, read_only=True)  
+    # Serialização aninhada para `category` usando CategorySerializer
+    category = CategorySerializer(read_only=True)
+
     class Meta:
         model = Task
-        fields = ['id', 'title', 'description', 'completed', 'created_at', 'updated_at', 'user', 'category']
+        fields = [
+            'id', 'title', 'description', 'completed', 'created_at', 
+            'updated_at', 'user', 'category', 'shared_with'
+        ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'user']
 
+# Serializer para registrar um novo usuário
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
