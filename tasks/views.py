@@ -1,7 +1,7 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework.decorators import action
 from .models import Task
 from .serializers import TaskSerializer, UserRegistrationSerializer
 
@@ -16,6 +16,13 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    @action(detail=True, methods=['patch'], url_path='toggle_complete')
+    def toggle_complete(self, request, pk=None):
+        task = self.get_object()
+        task.completed = not task.completed
+        task.save()
+        return Response({'status': 'updated', 'completed': task.completed}, status=status.HTTP_200_OK)
 
 class UserRegistrationView(APIView):
     permission_classes = [permissions.AllowAny]
