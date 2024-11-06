@@ -49,6 +49,7 @@ Projeto de API RESTful para gerenciamento de tarefas.
 
 5. **Configuração do Banco de Dados**:
     ```bash
+    python manage.py makemigrations
     python manage.py migrate
     python manage.py createsuperuser
 
