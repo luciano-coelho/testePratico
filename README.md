@@ -29,7 +29,7 @@ Projeto de API RESTful para gerenciamento de tarefas.
 1. **Clone o repositório**:
 
    ```bash
-    git clone https://github.com/luciano-coelho/testePraticoFront.git
+    git clone https://github.com/luciano-coelho/testePratico
     cd testePraticoFront
 
 2. **Crie e ative um ambiente virtual**:
