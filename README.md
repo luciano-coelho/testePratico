@@ -35,6 +35,8 @@ Projeto de API RESTful para gerenciamento de tarefas.
 2. **Crie e ative um ambiente virtual**:
     ```bash
     python -m venv venv
+    .\venv\Scripts\activate - Windows
+    source venv/bin/activate - Linux
 
 3. **Instale as dependências**:
     ```bash

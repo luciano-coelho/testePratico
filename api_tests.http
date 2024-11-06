@@ -9,14 +9,15 @@ Content-Type: application/json
 
 ### Listar Tarefas
 GET http://127.0.0.1:8000/api/tasks/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzQ0Njg4LCJpYXQiOjE3MzA3NDQzODgsImp0aSI6IjRlY2FlZWNlZWQ5ODQ0NWVhYmQwNzNkYjQ4ZTUyMjQ2IiwidXNlcl9pZCI6MX0.pQ4sPW3Gz8p3lXxcRFmO_fqLPU4P1wYk4Q3c1GPe8rY
-### Criar uma Nova Tarefa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwODY4NDI5LCJpYXQiOjE3MzA4NjgxMjksImp0aSI6ImI4MmZlNGQ4NmI5NzRiMzc5MTc5ZGNkMDc4ZGM0ZDU1IiwidXNlcl9pZCI6MX0.yATFkkPnLtF9HoMYXOxbXY7SVQZNLyv1L1jigasDJ98
+
+### Criar tarefas
 POST http://127.0.0.1:8000/api/tasks/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNjMxNDk1LCJpYXQiOjE3MzA2MzA3NDcsImp0aSI6IjYzNDc4NTFlN2U2ZDQzMDZhYTg1Y2M0YWUwZTA0NDFjIiwidXNlcl9pZCI6MX0.vT1OADjeNeGjpB3B-IlH372cB9UglwYqorgKjF6rnTE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzUxMTE2LCJpYXQiOjE3MzA3NTA4MTYsImp0aSI6IjcyODgxNDdkMDZjNjQyZWNiNTZlMzg5ZjI4ZGYyN2ZlIiwidXNlcl9pZCI6Mn0.E9q-O4HXLisG4oKCMW5xWvzo6PsddzrE4MIT8LYjSs4
 
 {
-  "title": "mais uma tarefa",
+  "title": "uma tarefa para novo usuário",
   "description": "uma descrição de teste",
   "completed": false
 }
@@ -28,7 +29,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 ### Atualizar uma Tarefa
 PUT http://127.0.0.1:8000/api/tasks/1/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNjMxMDQ3LCJpYXQiOjE3MzA2MzA3NDcsImp0aSI6ImVkNjBhOTc0NzIzNDQ5MDM4ZjQ1YzAzYWY3NWVjYWEyIiwidXNlcl9pZCI6MX0.J-czstaXRbpUsEYQhqiq_HppL1n12la3vP8N5WPSjDg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwODY4NDI5LCJpYXQiOjE3MzA4NjgxMjksImp0aSI6ImI4MmZlNGQ4NmI5NzRiMzc5MTc5ZGNkMDc4ZGM0ZDU1IiwidXNlcl9pZCI6MX0.yATFkkPnLtF9HoMYXOxbXY7SVQZNLyv1L1jigasDJ98
 
 {
   "title": "Tarefa de teste atualizada",
@@ -56,4 +57,57 @@ Content-Type: application/json
     "username": "teste_usuario",
     "password": "123456",
     "email": "teste@teste.com"
+}
+
+### Listar todos os usuários
+GET http://127.0.0.1:8000/api/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwODY0NDU3LCJpYXQiOjE3MzA4NjQxNTcsImp0aSI6IjY2YmYxZmZlOGUyZjRkYTdiYmRmYWQ3YTlhOGEzNzNmIiwidXNlcl9pZCI6MX0.8hIHz37Hu6JSN_C2WWYAspUYkRhnJ5E_cABk5G1A0CU
+Content-Type: application/json
+
+
+
+### Criar Categoria
+POST http://127.0.0.1:8000/api/categories/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzcwMDY3LCJpYXQiOjE3MzA3Njk3NjcsImp0aSI6Ijg4MjkyYTI3ODU4NTQ4MzM4Y2U0MjE2MzllNWZlYzQ0IiwidXNlcl9pZCI6MX0.pa-EZNUGHFQ4aelnDKhVbbVI4gEJ-2LYD-o3zpPahZk
+
+{
+  "name": "teste1"
+}
+
+### Teste para compartilhar tarefa
+POST http://127.0.0.1:8000/api/tasks/1/share/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwODA4MDY2LCJpYXQiOjE3MzA4MDc3NjYsImp0aSI6Ijk5NDU2YjQ5YzdkZjRhYzhiNjMzZjU2NTU4MjQyZDExIiwidXNlcl9pZCI6MX0.rEI6duEcvIfriJhjpQeykLH_vtzia_4Ync_lPIGr8Vw
+
+{
+  "user_id": 2  
+}
+
+### Listar Categorias
+GET http://127.0.0.1:8000/api/categories/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwODMzMTU4LCJpYXQiOjE3MzA4MzI4NTgsImp0aSI6ImZhMzVjM2QwMDQxMzRhYjM5ZDYxMTQ2OTFmMDIzMWE5IiwidXNlcl9pZCI6MX0.JNS1pEt_eSo1jx4yE8b95tHvEk2a1iDxbnrd1w99Q6Q
+
+### Atualizar Tarefa com Categoria
+PATCH http://127.0.0.1:8000/api/tasks/1/  # Substitua "1" pelo ID da tarefa
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwODMzMTU4LCJpYXQiOjE3MzA4MzI4NTgsImp0aSI6ImZhMzVjM2QwMDQxMzRhYjM5ZDYxMTQ2OTFmMDIzMWE5IiwidXNlcl9pZCI6MX0.JNS1pEt_eSo1jx4yE8b95tHvEk2a1iDxbnrd1w99Q6Q
+{
+  "category": 4  
+}
+
+### Listar Tarefas com Categoria
+GET http://127.0.0.1:8000/api/tasks/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwODMzMTU4LCJpYXQiOjE3MzA4MzI4NTgsImp0aSI6ImZhMzVjM2QwMDQxMzRhYjM5ZDYxMTQ2OTFmMDIzMWE5IiwidXNlcl9pZCI6MX0.JNS1pEt_eSo1jx4yE8b95tHvEk2a1iDxbnrd1w99Q6Q
+
+### Criar uma nova tarefa com categoria associada
+POST http://127.0.0.1:8000/api/tasks/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwODYwMzUyLCJpYXQiOjE3MzA4NjAwNTIsImp0aSI6Ijc5NzI3MzE4Y2ViYzRlNWZiYmRjZWYwNDMyOTE2OWQ2IiwidXNlcl9pZCI6MX0.b_fLCyRQ9BWqvFk5gL5QJUIB7sGRAY_t4lQwn0OlvYk
+Content-Type: application/json
+
+{
+  "title": "Tarefa de Teste com Categoria",
+  "description": "Esta é uma tarefa de teste com categoria associada.",
+  "completed": false,
+  "category_id": 1
 }
