@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 from django.db.models import Q
 from django.contrib.auth.models import User
 from .models import Task, Category
-from .serializers import TaskSerializer, CategorySerializer, UserRegistrationSerializer
+from .serializers import TaskSerializer, CategorySerializer, UserRegistrationSerializer, UserSerializer
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
@@ -40,6 +40,10 @@ class TaskViewSet(viewsets.ModelViewSet):
         except User.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()

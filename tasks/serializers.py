@@ -48,3 +48,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             email=validated_data.get('email', '')
         )
         return user
+    
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email']

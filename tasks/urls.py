@@ -1,12 +1,14 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import TaskViewSet, CategoryViewSet, UserRegistrationView
+from .views import TaskViewSet, CategoryViewSet, UserRegistrationView, UserViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.contrib import admin
 
 router = DefaultRouter()
 router.register(r'tasks', TaskViewSet, basename='task')
 router.register(r'categories', CategoryViewSet, basename='category')
+router.register(r'users', UserViewSet)  # Endpoint para listar todos os usuários
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)), 
