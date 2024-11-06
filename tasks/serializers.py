@@ -17,15 +17,19 @@ class UserSerializer(serializers.ModelSerializer):
 # Serializer principal para a tarefa
 class TaskSerializer(serializers.ModelSerializer):
     # Usando UserSerializer para `shared_with` para exibir `username` dos usuários
-    shared_with = UserSerializer(many=True, read_only=True)  
+    shared_with = UserSerializer(many=True, read_only=True)
     # Serialização aninhada para `category` usando CategorySerializer
     category = CategorySerializer(read_only=True)
+    # Campo adicional para receber o ID da categoria no payload
+    category_id = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all(), source='category', write_only=True, required=False
+    )
 
     class Meta:
         model = Task
         fields = [
             'id', 'title', 'description', 'completed', 'created_at', 
-            'updated_at', 'user', 'category', 'shared_with'
+            'updated_at', 'user', 'category', 'category_id', 'shared_with'
         ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'user']
 
